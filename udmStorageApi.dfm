@@ -1,6 +1,6 @@
 object dmStorageApi: TdmStorageApi
-  Height = 480
-  Width = 640
+  Height = 458
+  Width = 627
   object FDConnection: TFDConnection
     Params.Strings = (
       'DriverID=SQLite')
@@ -41,5 +41,22 @@ object dmStorageApi: TdmStorageApi
     TableName = 'Config'
     Left = 248
     Top = 136
+  end
+  object FDQueryListSettings: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'UPDATE Config SET Value = :v WHERE Key = :k')
+    Left = 248
+    Top = 192
+    ParamData = <
+      item
+        Name = 'V'
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'K'
+        ParamType = ptInput
+      end>
   end
 end

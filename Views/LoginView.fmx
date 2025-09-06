@@ -1,7 +1,7 @@
-object Form3: TForm3
+object FLogin: TFLogin
   Left = 0
   Top = 0
-  Caption = 'Form3'
+  Caption = 'FLogin'
   ClientHeight = 480
   ClientWidth = 640
   FormFactor.Width = 320
@@ -14,13 +14,13 @@ object Form3: TForm3
     Size.Width = 97.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 1
+    TabOrder = 0
     Text = 'Se connecter'
     TextSettings.Trimming = None
   end
   object EServer: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 3
+    TabOrder = 2
     Position.X = 256.000000000000000000
     Position.Y = 115.000000000000000000
     Size.Width = 201.000000000000000000
@@ -30,15 +30,15 @@ object Form3: TForm3
   object LServer: TLabel
     Position.X = 160.000000000000000000
     Position.Y = 115.000000000000000000
-    Size.Width = 88.000000000000000000
+    Size.Width = 81.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
     Text = 'Url du serveur'
-    TabOrder = 6
+    TabOrder = 5
   end
   object EUsername: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 2
+    TabOrder = 1
     Position.X = 256.000000000000000000
     Position.Y = 168.000000000000000000
     Size.Width = 201.000000000000000000
@@ -47,7 +47,7 @@ object Form3: TForm3
   end
   object EPassword: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 7
+    TabOrder = 6
     Position.X = 256.000000000000000000
     Position.Y = 224.000000000000000000
     Size.Width = 201.000000000000000000
@@ -57,19 +57,19 @@ object Form3: TForm3
   object LPassword: TLabel
     Position.X = 160.000000000000000000
     Position.Y = 224.000000000000000000
-    Size.Width = 88.000000000000000000
+    Size.Width = 81.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
     Text = 'Mot de passe'
-    TabOrder = 5
+    TabOrder = 4
   end
   object LUsername: TLabel
     Position.X = 160.000000000000000000
     Position.Y = 168.000000000000000000
-    Size.Width = 88.000000000000000000
+    Size.Width = 81.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
     Text = 'Username'
-    TabOrder = 4
+    TabOrder = 3
   end
 end

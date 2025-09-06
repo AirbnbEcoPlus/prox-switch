@@ -8,7 +8,7 @@ uses
   FMX.Edit, FMX.Controls.Presentation;
 
 type
-  TForm3 = class(TForm)
+  TFLogin = class(TForm)
     BLogin: TButton;
     EServer: TEdit;
     EUsername: TEdit;
@@ -23,7 +23,7 @@ type
   end;
 
 var
-  Form3: TForm3;
+  FLogin: TFLogin;
 
 implementation
 

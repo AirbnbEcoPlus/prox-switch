@@ -4,10 +4,11 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs;
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, udmStorageApi, udmApiCommunicator, LoginView;
 
 type
-  TForm1 = class(TForm)
+  TFMain = class(TForm)
+    procedure FormShow(Sender: TObject);
   private
     { Déclarations privées }
   public
@@ -15,10 +16,25 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FMain: TFMain;
 
 implementation
 
 {$R *.fmx}
+
+procedure TFMain.FormShow(Sender: TObject);
+begin
+  if not dmApiCommunicator.isTokenValid then
+  begin
+    FLogin := TFLogin.Create(Self);
+     try
+      if FLogin.ShowModal <> mrOk then
+        Application.Terminate;
+    finally
+      FLogin.Free;
+    end;
+  end;
+
+end;
 
 end.

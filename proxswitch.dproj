@@ -284,8 +284,8 @@
             <Form>Form2</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="ApiCommunicator.pas">
-            <Form>DataModule1</Form>
+        <DCCReference Include="udmApiCommunicator.pas">
+            <Form>dmApiCommunicator</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -293,6 +293,10 @@
             <Form>dmStorageApi</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Views\LoginView.pas">
+            <Form>Form3</Form>
+            <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

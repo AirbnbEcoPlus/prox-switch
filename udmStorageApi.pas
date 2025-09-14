@@ -24,6 +24,8 @@ type
     { Déclarations publiques }
     procedure initStorage;
     function isHaveValue(key : string): boolean;
+    procedure saveValue(key, value: string);
+    function getValue(key: string) : string;
   end;
 
 var
@@ -42,7 +44,7 @@ implementation
 
 procedure TdmStorageApi.initStorage;
 begin
-     FDCommandCreateSettings.Open;
+     FDCommandCreateSettings.Execute();
 end;
 
 function TdmStorageApi.isHaveValue(key: string): boolean;
@@ -55,6 +57,30 @@ begin
   Result := not FDQueryListSettings.IsEmpty;
 
   FDQueryListSettings.Close;
+end;
+
+function TdmStorageApi.getValue(key: string): string;
+begin
+  FDQueryListSettings.Connection := FDConnection;
+  FDQueryListSettings.SQL.Text := 'SELECT Value FROM Config WHERE Key = :k';
+  FDQueryListSettings.ParamByName('k').AsString := key;
+  FDQueryListSettings.Open;
+
+  if not FDQueryListSettings.IsEmpty then
+    Result := FDQueryListSettings.FieldByName('Value').AsString
+  else
+    Result := '';
+
+  FDQueryListSettings.Close;
+end;
+
+
+procedure TdmStorageApi.saveValue(key, value: string);
+begin
+  FDQueryUpdateSettings.ParamByName('k').AsString := key;
+  FDQueryUpdateSettings.ParamByName('v').AsString := value;
+
+  FDQueryUpdateSettings.ExecSQL();
 end;
 
 end.

@@ -7,40 +7,16 @@ object dmApiCommunicator: TdmApiCommunicator
     Left = 72
     Top = 40
   end
-  object RESTRequestListVm: TRESTRequest
+  object RESTRequest: TRESTRequest
     Client = RESTClient
     Params = <>
-    Response = RESTResponseListVm
+    Response = RESTResponse
     SynchronizedEvents = False
     Left = 464
     Top = 80
   end
-  object RESTResponseListVm: TRESTResponse
+  object RESTResponse: TRESTResponse
     Left = 464
     Top = 144
-  end
-  object RESTRequestStopVm: TRESTRequest
-    Client = RESTClient
-    Params = <>
-    Response = RESTResponseStopVm
-    SynchronizedEvents = False
-    Left = 632
-    Top = 80
-  end
-  object RESTResponseStopVm: TRESTResponse
-    Left = 632
-    Top = 144
-  end
-  object RESTRequestStartVm: TRESTRequest
-    Client = RESTClient
-    Params = <>
-    Response = RESTResponseStartVm
-    SynchronizedEvents = False
-    Left = 464
-    Top = 248
-  end
-  object RESTResponseStartVm: TRESTResponse
-    Left = 464
-    Top = 312
   end
 end

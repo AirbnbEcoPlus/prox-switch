@@ -16,6 +16,7 @@ type
     EPassword: TEdit;
     LPassword: TLabel;
     LUsername: TLabel;
+    procedure BLoginClick(Sender: TObject);
   private
     { Déclarations privées }
   public
@@ -28,5 +29,15 @@ var
 implementation
 
 {$R *.fmx}
+
+uses udmApiCommunicator, udmStorageApi;
+
+procedure TFLogin.BLoginClick(Sender: TObject);
+begin
+  dmStorageApi.saveValue('server_url', EServer.Text);
+  dmStorageApi.saveValue('username', LServer.Text);
+  dmStorageApi.saveValue('password', LPassword.Text);
+  Close;
+end;
 
 end.

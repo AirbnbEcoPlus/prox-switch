@@ -3,8 +3,8 @@ object dmStorageApi: TdmStorageApi
   Width = 627
   object FDConnection: TFDConnection
     Params.Strings = (
+      'Database=C:\Users\adf7b\Code\prox-switch\Win32\Debug\data.db'
       'DriverID=SQLite')
-    Connected = True
     Left = 48
     Top = 24
   end
@@ -38,6 +38,7 @@ object dmStorageApi: TdmStorageApi
   end
   object FDTableConfig: TFDTable
     Connection = FDConnection
+    ResourceOptions.AssignedValues = [rvEscapeExpand]
     TableName = 'Config'
     Left = 248
     Top = 136
@@ -45,18 +46,8 @@ object dmStorageApi: TdmStorageApi
   object FDQueryListSettings: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
-      'UPDATE Config SET Value = :v WHERE Key = :k')
+      'SELECT * FROM CONFIG')
     Left = 248
     Top = 192
-    ParamData = <
-      item
-        Name = 'V'
-        ParamType = ptInput
-        Value = Null
-      end
-      item
-        Name = 'K'
-        ParamType = ptInput
-      end>
   end
 end

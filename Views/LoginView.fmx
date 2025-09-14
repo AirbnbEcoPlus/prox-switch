@@ -17,11 +17,12 @@ object FLogin: TFLogin
     TabOrder = 0
     Text = 'Se connecter'
     TextSettings.Trimming = None
+    OnClick = BLoginClick
   end
   object EServer: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 2
-    Position.X = 256.000000000000000000
+    Position.X = 249.000000000000000000
     Position.Y = 115.000000000000000000
     Size.Width = 201.000000000000000000
     Size.Height = 22.000000000000000000
@@ -39,17 +40,8 @@ object FLogin: TFLogin
   object EUsername: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 1
-    Position.X = 256.000000000000000000
+    Position.X = 249.000000000000000000
     Position.Y = 168.000000000000000000
-    Size.Width = 201.000000000000000000
-    Size.Height = 22.000000000000000000
-    Size.PlatformDefault = False
-  end
-  object EPassword: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 6
-    Position.X = 256.000000000000000000
-    Position.Y = 224.000000000000000000
     Size.Width = 201.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
@@ -71,5 +63,14 @@ object FLogin: TFLogin
     Size.PlatformDefault = False
     Text = 'Username'
     TabOrder = 3
+  end
+  object EPassword: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 6
+    Position.X = 249.000000000000000000
+    Position.Y = 224.000000000000000000
+    Size.Width = 201.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
   end
 end

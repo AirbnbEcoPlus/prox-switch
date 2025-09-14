@@ -4,19 +4,16 @@ interface
 
 uses
   System.SysUtils, System.Classes, REST.Types, REST.Client,
-  Data.Bind.Components, Data.Bind.ObjectScope;
+  Data.Bind.Components, Data.Bind.ObjectScope, JSON;
 
 type
   TdmApiCommunicator = class(TDataModule)
     RESTClient: TRESTClient;
-    RESTRequestListVm: TRESTRequest;
-    RESTResponseListVm: TRESTResponse;
-    RESTRequestStopVm: TRESTRequest;
-    RESTResponseStopVm: TRESTResponse;
-    RESTRequestStartVm: TRESTRequest;
-    RESTResponseStartVm: TRESTResponse;
+    RESTRequest: TRESTRequest;
+    RESTResponse: TRESTResponse;
   private
-    { Déclarations privées }
+    FToken: string;
+    FCSRF: string;
   public
     { Déclarations publiques }
     procedure InitApp;
@@ -30,19 +27,52 @@ implementation
 
 {%CLASSGROUP 'FMX.Controls.TControl'}
 
+uses udmStorageApi;
+
 {$R *.dfm}
 
 { TDataModule1 }
 
 procedure TdmApiCommunicator.InitApp;
+var
+  Server, Username, Password: string;
 begin
+  Server := dmStorageApi.getValue('server_url');
+  Username := dmStorageApi.getValue('username');
+  Password := dmStorageApi.getValue('password');
 
+  if (Server = '') or (Username = '') or (Password = '') then
+    Exit;
+
+  RESTClient.BaseURL := Server + '/api2/json';
+
+  RESTRequest.Method := rmPOST;
+  RESTRequest.Resource := 'access/ticket';
+  RESTRequest.Params.Clear;
+  RESTRequest.AddParameter('username', Username, pkGETorPOST);
+  RESTRequest.AddParameter('password', Password, pkGETorPOST);
+
+  RESTRequest.Execute;
+
+  if RESTResponse.StatusCode = 200 then
+  begin
+    var json := TJSONObject.ParseJSONValue(RESTResponse.Content) as TJSONObject;
+    try
+      var data := json.GetValue<TJSONObject>('data');
+      FToken := data.GetValue<string>('ticket');
+      FCSRF := data.GetValue<string>('CSRFPreventionToken');
+    finally
+      json.Free;
+    end;
+  end
+  else
+    raise Exception.Create('Erreur login Proxmox: ' + RESTResponse.StatusText);
 end;
 
 
 function TdmApiCommunicator.isTokenValid: boolean;
 begin
-  Result := false;
+  Result := FToken <> '';
 end;
 
 end.

@@ -24,6 +24,8 @@ implementation
 
 procedure TFMain.FormShow(Sender: TObject);
 begin
+  dmStorageApi.initStorage;
+  dmApiCommunicator.InitApp;
   if not dmApiCommunicator.isTokenValid then
   begin
     FLogin := TFLogin.Create(Self);
